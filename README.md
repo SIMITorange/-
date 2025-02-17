@@ -1,1 +1,48 @@
-# -
+# **发票处理系统 v1.0**
+- 邮箱配置
+    - SMTP_SERVER: mail.cstnet.cn
+    - SMTP_PORT: 465
+    - EMAIL_ADDRESS: zhang_cheng@mail.sim.ac.cn
+    - EMAIL_PASSWORD: 环境变量获取
+    - RECIPIENT_EMAIL: zhang_cheng@mail.sim.ac.cn
+- UI界面
+    - 标题: 发票处理系统 v1.0
+    - 尺寸: 400x200
+    - 框架
+        - 标签: 请选择包含发票PDF的文件夹
+        - 按钮
+            - 文本: 选择文件夹
+            - 功能: 调用 select_folder 函数
+            - 样式: 背景 #4CAF50，前景 white，内边距 padx=20, pady=10
+- 主要功能函数
+    - select_folder
+        - 功能: 选择文件夹并调用 process_pdfs 处理
+    - extract_invoice_info
+        - 功能: 使用正则表达式提取发票号码和总金额
+        - 模式
+            - 发票号码: 多种匹配模式
+            - 总金额: 多种匹配模式
+    - print_pdf
+        - 功能: 使用 Selenium 打开 PDF 并打印
+        - 步骤
+            - 设置 Chrome 选项
+            - 打开 PDF 文件
+            - 等待加载
+            - 执行打印命令
+            - 等待打印完成
+    - send_email
+        - 功能: 发送文件夹下所有 PDF 作为附件
+        - 步骤
+            - 构建邮件内容
+            - 添加附件
+            - 使用 SSL 安全连接发送邮件
+    - process_pdfs
+        - 功能: 处理文件夹下所有 PDF 文件
+        - 步骤
+            - 遍历 PDF 文件
+            - 提取文本内容
+            - 提取发票信息
+            - 重命名文件（处理冲突）
+            - 打印文件
+            - 发送邮件
+            - 显示处理结果# -
